@@ -312,5 +312,15 @@
         {
             throw new NotImplementedException();
         }
+
+        public string ConnectionString
+        {
+            set
+            {
+                this.connectionString = value;
+            }
+        }
+
+        private string connectionString;
     }
 }
