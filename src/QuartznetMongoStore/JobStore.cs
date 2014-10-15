@@ -7,6 +7,22 @@
 
     public class JobStore : IJobStore
     {
+        private string instanceId;
+
+        private string instanceName;
+
+        private int threadPoolSize;
+
+        public static int InstanceCount
+        {
+            get; 
+            private set;
+        }
+        public JobStore()
+        {
+            InstanceCount++;
+        }
+
         public IList<IOperableTrigger> AcquireNextTriggers(DateTimeOffset noLaterThan, int maxCount, TimeSpan timeWindow)
         {
             throw new NotImplementedException();
@@ -29,7 +45,10 @@
 
         public bool Clustered
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                return true;
+            }
         }
 
         public long EstimatedTimeToReleaseAndAcquireTrigger
@@ -94,17 +113,23 @@
 
         public void Initialize(ITypeLoadHelper loadHelper, ISchedulerSignaler signaler)
         {
-            throw new NotImplementedException();
+            
         }
 
         public string InstanceId
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                this.instanceId = value;
+            }
         }
 
         public string InstanceName
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                this.instanceName = value;
+            }
         }
 
         public bool IsJobGroupPaused(string groupName)
@@ -264,12 +289,18 @@
 
         public bool SupportsPersistence
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                return true;
+            }
         }
 
         public int ThreadPoolSize
         {
-            set { throw new NotImplementedException(); }
+            set
+            {
+                this.threadPoolSize = value;
+            }
         }
 
         public void TriggeredJobComplete(IOperableTrigger trigger, Quartz.IJobDetail jobDetail, Quartz.SchedulerInstruction triggerInstCode)
