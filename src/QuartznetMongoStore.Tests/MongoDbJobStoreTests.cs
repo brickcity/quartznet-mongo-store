@@ -27,5 +27,16 @@
              * from the app.config to make this test fail
              */
         }
+
+        [Fact]
+        public void ShouldBeStartable()
+        {
+            var sched = StdSchedulerFactory.GetDefaultScheduler();
+            Assert.False(sched.IsStarted);
+            sched.Start();
+            Assert.True(sched.IsStarted);
+            Assert.False(sched.IsShutdown);
+            sched.Shutdown();
+        }
     }
 }

@@ -244,7 +244,7 @@
 
         public void SchedulerPaused()
         {
-            throw new NotImplementedException();
+
         }
 
         public void SchedulerResumed()
@@ -254,12 +254,12 @@
 
         public void SchedulerStarted()
         {
-            throw new NotImplementedException();
+ 
         }
 
         public void Shutdown()
         {
-            throw new NotImplementedException();
+
         }
 
         public void StoreCalendar(string name, Quartz.ICalendar calendar, bool replaceExisting, bool updateTriggers)
